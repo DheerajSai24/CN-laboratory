@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networks Laboratory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1 id="main-title" class="fade-in">Computer Networks Laboratory</h1>
+        <button id="theme-toggle" class="animated-button-small">Toggle Theme</button>
+    </header>
+
+    <main>
+        <section id="home-page" class="active">
+            <div class="week-cards-grid">
+                <!-- Week cards will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <section id="week-details-page" class="hidden">
+            <h2 id="week-detail-title"></h2>
+            <div class="detail-content">
+                <p id="week-detail-explanation"></p>
+                <div class="image-container">
+                    <img id="week-detail-image" src="" alt="Concept Diagram">
+        </div>
+
+                <!-- Sub-program navigation for Week 1 -->
+                <div id="sub-program-navigation" class="hidden">
+                    <h4 id="program-title"></h4>
+                    <div class="program-nav-buttons">
+                        <button id="prev-program-btn" class="animated-button-small">&lt; Previous</button>
+                        <button id="next-program-btn" class="animated-button-small">Next &gt;</button>
+            </div>
+        </div>
+
+                <div class="code-container">
+                    <h3>C Program</h3>
+                    <pre><code id="week-detail-code" class="language-c"></code></pre>
+                </div>
+                <div class="output-container">
+                    <h3>Simulated Output</h3>
+                    <pre id="week-detail-output"></pre>
+        </div>
+    </div>
+            <button id="back-to-home" class="animated-button">Back to Home</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
