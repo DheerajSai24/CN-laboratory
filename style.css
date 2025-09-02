@@ -503,6 +503,46 @@ main {
         padding: 0.7rem 1.8rem;
         font-size: 0.9rem;
     }
+
+    /* Compiler responsive styles */
+    .compiler-container {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .compiler-container h3 {
+        font-size: 1.5rem;
+    }
+
+    #c-code-editor {
+        min-height: 250px;
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .compiler-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .compiler-button, .compiler-button-secondary {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .compiler-output {
+        padding: 1rem;
+    }
+
+    .compiler-output h4 {
+        font-size: 1.1rem;
+    }
+
+    #compiler-result {
+        font-size: 0.8rem;
+    }
 }
 
 /* Animations */
