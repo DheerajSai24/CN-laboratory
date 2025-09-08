@@ -322,6 +322,127 @@ main {
     line-height: 1.4;
 }
 
+/* Compiler Styles */
+.compiler-container {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    margin-top: 2.5rem;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.compiler-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color-2);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.compiler-editor {
+    margin-bottom: 1.5rem;
+}
+
+#c-code-editor {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--code-bg);
+    color: var(--code-text);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#c-code-editor:focus {
+    border-color: var(--accent-color-2);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.compiler-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.compiler-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color-2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.compiler-button:hover {
+    background-color: var(--accent-color-1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.compiler-button-secondary {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.compiler-button-secondary:hover {
+    background-color: var(--accent-color-1);
+    color: white;
+    border-color: var(--accent-color-1);
+    transform: translateY(-1px);
+}
+
+.compiler-output {
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 5px solid var(--accent-color-2);
+    transition: all 0.3s ease;
+}
+
+.compiler-output.success {
+    border-left-color: #4CAF50;
+}
+
+.compiler-output.error {
+    border-left-color: #f44336;
+}
+
+.compiler-output h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color-2);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#compiler-result {
+    color: var(--code-text);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
 /* Back to Home Button */
 .animated-button {
     display: flex;
@@ -511,33 +632,26 @@ main {
     }
 
     .compiler-container h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     #c-code-editor {
         min-height: 250px;
-        padding: 1rem;
-        font-size: 0.8rem;
+        font-size: 13px;
     }
 
     .compiler-controls {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
     .compiler-button, .compiler-button-secondary {
-        padding: 0.7rem 1.5rem;
+        margin-bottom: 0.5rem;
         font-size: 0.9rem;
-        width: 100%;
-        max-width: 200px;
     }
 
     .compiler-output {
         padding: 1rem;
-    }
-
-    .compiler-output h4 {
-        font-size: 1.1rem;
     }
 
     #compiler-result {

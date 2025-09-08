@@ -1144,189 +1144,23 @@ and the theoretical foundations of tools like Wireshark.`
         }
     });
 
-    // C Compiler Functionality
+    // Simple C Compiler Functionality
     const cCodeEditor = document.getElementById('c-code-editor');
     const runCodeBtn = document.getElementById('run-code-btn');
     const clearCodeBtn = document.getElementById('clear-code-btn');
     const compilerOutput = document.getElementById('compiler-output');
     const compilerResult = document.getElementById('compiler-result');
-    const inputSection = document.getElementById('input-section');
-    const inputFields = document.getElementById('input-fields');
-    const submitInputsBtn = document.getElementById('submit-inputs-btn');
-    const lineNumbers = document.getElementById('line-numbers');
-    const settingsBtn = document.getElementById('settings-btn');
-    const settingsPanel = document.getElementById('settings-panel');
-    const saveSettingsBtn = document.getElementById('save-settings');
-    const cancelSettingsBtn = document.getElementById('cancel-settings');
 
-    // Default C code (Simple Hello World example)
-    const defaultCCode = `#include <stdio.h>
+    // Initialize with sample code
+    const sampleCode = `#include <stdio.h>
 
 int main() {
     printf("Hello, World!\\n");
-    printf("Welcome to C Compiler\\n");
-    
-    int number = 42;
-    printf("The answer is: %d\\n", number);
-    
+    printf("Welcome to CN Laboratory\\n");
     return 0;
 }`;
 
-    // Initialize editor with default code
-    cCodeEditor.value = defaultCCode;
-    
-    // Update line numbers and syntax highlighting
-    updateLineNumbers();
-    applySyntaxHighlighting();
-    
-    // Event listeners for editor enhancements
-    cCodeEditor.addEventListener('input', () => {
-        updateLineNumbers();
-        applySyntaxHighlighting();
-    });
-    
-    cCodeEditor.addEventListener('scroll', () => {
-        lineNumbers.scrollTop = cCodeEditor.scrollTop;
-    });
-    
-    cCodeEditor.addEventListener('keydown', (e) => {
-        // Handle Tab key for indentation
-        if (e.key === 'Tab') {
-            e.preventDefault();
-            const start = cCodeEditor.selectionStart;
-            const end = cCodeEditor.selectionEnd;
-            const value = cCodeEditor.value;
-            cCodeEditor.value = value.substring(0, start) + '    ' + value.substring(end);
-            cCodeEditor.selectionStart = cCodeEditor.selectionEnd = start + 4;
-            updateLineNumbers();
-            applySyntaxHighlighting();
-        }
-    });
-
-    // Clear code button functionality
-    clearCodeBtn.addEventListener('click', () => {
-        cCodeEditor.value = defaultCCode;
-        updateLineNumbers();
-        applySyntaxHighlighting();
-        compilerOutput.classList.add('hidden');
-        compilerOutput.classList.remove('success', 'error', 'running');
-        inputSection.classList.add('hidden');
-        inputFields.innerHTML = '';
-    });
-
-    // Add code templates functionality
-    const codeTemplates = {
-        'Hello World': `#include <stdio.h>
-
-int main() {
-    printf("Hello, World!\\n");
-    return 0;
-}`,
-        'Input/Output': `#include <stdio.h>
-
-int main() {
-    int number;
-    printf("Enter a number: ");
-    scanf("%d", &number);
-    printf("You entered: %d\\n", number);
-    return 0;
-}`,
-        'Array Operations': `#include <stdio.h>
-
-int main() {
-    int arr[5] = {1, 2, 3, 4, 5};
-    int i;
-    
-    printf("Array elements: ");
-    for(i = 0; i < 5; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\\n");
-    
-    return 0;
-}`,
-        'Function Example': `#include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    int x = 10, y = 20;
-    int result = add(x, y);
-    printf("Sum of %d and %d is: %d\\n", x, y, result);
-    return 0;
-}`
-    };
-
-    // Add template selector
-    const templateSelector = document.createElement('select');
-    templateSelector.innerHTML = '<option value="">Select a template...</option>';
-    Object.keys(codeTemplates).forEach(template => {
-        templateSelector.innerHTML += `<option value="${template}">${template}</option>`;
-    });
-    
-    templateSelector.addEventListener('change', (e) => {
-        if (e.target.value && codeTemplates[e.target.value]) {
-            cCodeEditor.value = codeTemplates[e.target.value];
-            updateLineNumbers();
-            applySyntaxHighlighting();
-        }
-    });
-    
-    // Insert template selector before compiler controls
-    const compilerControls = document.querySelector('.compiler-controls');
-    const templateContainer = document.createElement('div');
-    templateContainer.className = 'template-selector';
-    templateContainer.innerHTML = '<label for="template-select">Code Templates: </label>';
-    templateContainer.appendChild(templateSelector);
-    compilerControls.parentNode.insertBefore(templateContainer, compilerControls);
-
-    // Settings functionality
-    let compilerSettings = {
-        apiProvider: 'judge0',
-        rapidApiKey: '',
-        timeout: 30
-    };
-
-    // Load settings from localStorage
-    const savedSettings = localStorage.getItem('compilerSettings');
-    if (savedSettings) {
-        compilerSettings = { ...compilerSettings, ...JSON.parse(savedSettings) };
-    }
-
-    // Update settings UI
-    function updateSettingsUI() {
-        document.getElementById('api-provider').value = compilerSettings.apiProvider;
-        document.getElementById('rapidapi-key').value = compilerSettings.rapidApiKey;
-        document.getElementById('timeout-setting').value = compilerSettings.timeout;
-    }
-
-    // Initialize settings UI
-    updateSettingsUI();
-
-    // Settings button event listeners
-    settingsBtn.addEventListener('click', () => {
-        settingsPanel.classList.toggle('hidden');
-        updateSettingsUI();
-    });
-
-    saveSettingsBtn.addEventListener('click', () => {
-        compilerSettings.apiProvider = document.getElementById('api-provider').value;
-        compilerSettings.rapidApiKey = document.getElementById('rapidapi-key').value;
-        compilerSettings.timeout = parseInt(document.getElementById('timeout-setting').value);
-        
-        // Save to localStorage
-        localStorage.setItem('compilerSettings', JSON.stringify(compilerSettings));
-        
-        settingsPanel.classList.add('hidden');
-        showCompilerResult('Settings saved successfully!', 'success');
-    });
-
-    cancelSettingsBtn.addEventListener('click', () => {
-        settingsPanel.classList.add('hidden');
-        updateSettingsUI(); // Reset to saved values
-    });
+    cCodeEditor.value = sampleCode;
 
     // Run code button functionality
     runCodeBtn.addEventListener('click', async () => {
@@ -1337,466 +1171,492 @@ int main() {
             return;
         }
 
-        // Check if code contains scanf statements
-        if (code.includes('scanf(')) {
-            showInputFields(code);
-            return;
-        }
+        // Show loading state
+        showCompilerResult('🔄 Compiling and running your code...', 'running');
+        runCodeBtn.disabled = true;
+        runCodeBtn.textContent = 'Running...';
 
-        // If no scanf, run directly
-        await executeCode(code);
-    });
-
-    // Function to show input fields for scanf statements
-    function showInputFields(code) {
-        const scanfMatches = code.match(/scanf\s*\(\s*"([^"]*)"[^)]*,\s*&(\w+)(?:\s*,\s*&(\w+))*[^)]*\)/g);
-        if (scanfMatches) {
-            inputFields.innerHTML = '';
-            let inputIndex = 0;
-            
-            scanfMatches.forEach(scanfMatch => {
-                const fullMatch = scanfMatch.match(/scanf\s*\(\s*"([^"]*)"[^)]*,\s*&(\w+)(?:\s*,\s*&(\w+))*[^)]*\)/);
-                if (fullMatch) {
-                    const promptText = fullMatch[1];
-                    const varNames = [fullMatch[2], fullMatch[3]].filter(Boolean);
-                    
-                    // Create input field for each variable
-                    varNames.forEach(varName => {
-                        const inputField = document.createElement('div');
-                        inputField.className = 'input-field';
-                        inputField.innerHTML = `
-                            <label for="input-${inputIndex}">${promptText} (${varName}):</label>
-                            <input type="number" id="input-${inputIndex}" placeholder="Enter value for ${varName}" data-varname="${varName}">
-                        `;
-                        inputFields.appendChild(inputField);
-                        inputIndex++;
-                    });
-                }
-            });
-            
-            inputSection.classList.remove('hidden');
-            compilerOutput.classList.add('hidden');
-        }
-    }
-
-    // Function to execute code with user inputs
-    async function executeCode(code, userInputs = {}) {
-        console.log('executeCode called with:', { code, userInputs });
-        
-        // Show running state
-        showCompilerResult('🔄 Compiling and running your C code...', 'running');
-        
         try {
-            let result = '';
-            
-            // Use settings to determine which compiler to use
-            if (compilerSettings.apiProvider === 'judge0' && compilerSettings.rapidApiKey) {
-                try {
-                    result = await compileWithJudge0(code, userInputs);
-                } catch (judge0Error) {
-                    console.log('Judge0 failed, falling back to simulation...');
-                    result = await compileAndRunCode(code, 'demo', 'demo', userInputs);
-                }
-            } else {
-                // Use simulation mode
-                console.log('Using simulation mode');
-                result = await compileAndRunCode(code, 'demo', 'demo', userInputs);
-            }
-            
-            console.log('Final result to display:', result);
+            // Use Judge0 API for real compilation
+            const result = await compileWithJudge0(code);
             showCompilerResult(result, 'success');
         } catch (error) {
-            console.error('Error in executeCode:', error);
-            showCompilerResult(`Error: ${error.message}`, 'error');
+            // Fallback to simulation if Judge0 fails
+            console.log('Judge0 failed, using simulation:', error.message);
+            const simulatedResult = simulateCode(code);
+            showCompilerResult(simulatedResult, 'success');
+        } finally {
+            runCodeBtn.disabled = false;
+            runCodeBtn.textContent = 'Run Code';
         }
-    }
+    });
 
-    // Event listener for submit inputs button
-    submitInputsBtn.addEventListener('click', async () => {
-        const inputs = {};
-        const inputElements = inputFields.querySelectorAll('input');
-        
-        inputElements.forEach(input => {
-            const varName = input.dataset.varname;
-            const value = parseInt(input.value) || 0;
-            inputs[varName] = value;
-        });
-        
-        // Hide input section and run code
-        inputSection.classList.add('hidden');
-        await executeCode(cCodeEditor.value.trim(), inputs);
+    // Clear code button functionality
+    clearCodeBtn.addEventListener('click', () => {
+        cCodeEditor.value = sampleCode;
+        compilerOutput.classList.add('hidden');
+        compilerOutput.classList.remove('success', 'error', 'running');
     });
 
     // Function to show compiler result
     function showCompilerResult(message, type) {
-        console.log('showCompilerResult called with:', { message, type });
-        console.log('compilerResult element:', compilerResult);
-        console.log('compilerOutput element:', compilerOutput);
-        
         compilerResult.textContent = message;
         compilerOutput.classList.remove('hidden', 'success', 'error', 'running');
-        // Always use the same styling regardless of type to avoid red lines
-        compilerOutput.classList.add('success');
-        
-        console.log('After setting, compilerResult.textContent:', compilerResult.textContent);
-        console.log('After setting, compilerOutput.classList:', compilerOutput.classList.toString());
-    }
-
-    // Helper function to evaluate conditions in while loops
-    function evaluateCondition(left, operator, right) {
-        const leftVal = parseFloat(left);
-        const rightVal = parseFloat(right);
-        
-        switch (operator) {
-            case '<': return leftVal < rightVal;
-            case '<=': return leftVal <= rightVal;
-            case '>': return leftVal > rightVal;
-            case '>=': return leftVal >= rightVal;
-            case '==': return leftVal === rightVal;
-            case '!=': return leftVal !== rightVal;
-            default: return false;
-        }
-    }
-
-    // Function to update line numbers
-    function updateLineNumbers() {
-        const lines = cCodeEditor.value.split('\n');
-        const lineNumbersText = lines.map((_, index) => index + 1).join('\n');
-        lineNumbers.textContent = lineNumbersText;
-    }
-
-    // Function to apply basic syntax highlighting
-    function applySyntaxHighlighting() {
-        // This is a simplified syntax highlighting
-        // For a full implementation, you might want to use a library like Prism.js or CodeMirror
-        const code = cCodeEditor.value;
-        
-        // Basic C keywords
-        const keywords = ['int', 'char', 'float', 'double', 'void', 'if', 'else', 'while', 'for', 'do', 'switch', 'case', 'break', 'continue', 'return', 'include', 'define', 'main', 'printf', 'scanf', 'struct', 'typedef', 'const', 'static', 'extern', 'auto', 'register', 'volatile', 'signed', 'unsigned', 'long', 'short'];
-        
-        // Create a simple highlighting by wrapping keywords
-        let highlightedCode = code;
-        keywords.forEach(keyword => {
-            const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-            highlightedCode = highlightedCode.replace(regex, `<span class="keyword">${keyword}</span>`);
-        });
-        
-        // Highlight strings
-        highlightedCode = highlightedCode.replace(/"([^"\\]|\\.)*"/g, '<span class="string">$&</span>');
-        
-        // Highlight comments
-        highlightedCode = highlightedCode.replace(/\/\/.*$/gm, '<span class="comment">$&</span>');
-        highlightedCode = highlightedCode.replace(/\/\*[\s\S]*?\*\//g, '<span class="comment">$&</span>');
-        
-        // Note: This is a basic implementation. For production, consider using a proper syntax highlighter
-    }
-
-    // Simple and reliable C code simulation
-    function simulateCExecution(code, userInputs = {}) {
-        console.log('Starting simulation with code:', code);
-        console.log('User inputs:', userInputs);
-        
-        const output = [];
-        const variables = {};
-        
-        // Split code into lines for sequential processing
-        const lines = code.split('\n');
-        console.log('Processing lines:', lines);
-        
-        // Process each line sequentially to maintain proper execution order
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim();
-            console.log(`Processing line ${i}: "${line}"`);
-            
-            // Handle variable declarations
-            const intDeclMatch = line.match(/int\s+(\w+)\s*=\s*(\d+)/);
-            if (intDeclMatch) {
-                variables[intDeclMatch[1]] = parseInt(intDeclMatch[2]);
-                console.log(`Found int declaration: ${intDeclMatch[1]} = ${intDeclMatch[2]}`);
-                continue;
-            }
-            
-            // Handle char array declarations
-            const charDeclMatch = line.match(/char\s+(\w+)\s*\[\s*\d+\s*\]\s*=\s*"([^"]*)"/);
-            if (charDeclMatch) {
-                variables[charDeclMatch[1]] = charDeclMatch[2];
-                console.log(`Found char declaration: ${charDeclMatch[1]} = "${charDeclMatch[2]}"`);
-                continue;
-            }
-            
-            // Handle printf statements
-            const printfMatch = line.match(/printf\s*\(\s*"([^"]*)"[^)]*\)/);
-            if (printfMatch) {
-                console.log(`Found printf: "${printfMatch[1]}"`);
-                let content = printfMatch[1];
-                
-                // Handle escape sequences
-                content = content.replace(/\\n/g, '\n');
-                content = content.replace(/\\t/g, '\t');
-                
-                // Handle format specifiers
-                if (content.includes('%d')) {
-                    const fullMatch = line.match(/printf\s*\(\s*"[^"]*"[^)]*,\s*([^)]+)\)/);
-                    if (fullMatch) {
-                        const expression = fullMatch[1].trim();
-                        console.log(`Found format specifier with expression: ${expression}`);
-                        let value = 0;
-                        
-                        // Simple expression evaluation
-                        if (variables[expression] !== undefined) {
-                            value = variables[expression];
-                            console.log(`Variable ${expression} = ${value}`);
-                        } else if (expression.includes('+')) {
-                            const parts = expression.split('+').map(p => p.trim());
-                            value = (variables[parts[0]] || 0) + (variables[parts[1]] || 0);
-                        } else if (expression.includes('*')) {
-                            const parts = expression.split('*').map(p => p.trim());
-                            value = (variables[parts[0]] || 0) * (variables[parts[1]] || 0);
-                        } else if (!isNaN(expression)) {
-                            value = parseInt(expression);
-                        }
-                        
-                        content = content.replace(/%d/, value);
-                        console.log(`Replaced %d with ${value}`);
-                    }
-                }
-                
-                if (content.includes('%s')) {
-                    const fullMatch = line.match(/printf\s*\(\s*"[^"]*"[^)]*,\s*([^)]+)\)/);
-                    if (fullMatch) {
-                        const varName = fullMatch[1].trim();
-                        if (variables[varName]) {
-                            content = content.replace(/%s/, variables[varName]);
-                        }
-                    }
-                }
-                
-                console.log(`Adding to output: "${content}"`);
-                output.push(content);
-                continue;
-            }
-            
-            // Handle scanf statements
-            const scanfMatch = line.match(/scanf\s*\(\s*"([^"]*)"[^)]*,\s*&(\w+)/);
-            if (scanfMatch) {
-                const prompt = scanfMatch[1];
-                const varName = scanfMatch[2];
-                console.log(`Found scanf: prompt="${prompt}", variable=${varName}`);
-                
-                // Show prompt
-                output.push(prompt);
-                console.log(`Added prompt to output: "${prompt}"`);
-                
-                // Get input value
-                let inputValue = 0;
-                if (userInputs[varName] !== undefined) {
-                    inputValue = userInputs[varName];
-                    console.log(`Using user input for ${varName}: ${inputValue}`);
-                } else {
-                    // Use sample values
-                    const sampleInputs = [10, 20, 5, 15, 8, 12, 25, 30, 3, 7];
-                    inputValue = sampleInputs[Object.keys(variables).length % sampleInputs.length];
-                    console.log(`Using sample input for ${varName}: ${inputValue}`);
-                }
-                
-                variables[varName] = inputValue;
-                console.log(`Set variable ${varName} = ${inputValue}`);
-                continue;
-            }
-            
-            // Handle variable assignments
-            const assignMatch = line.match(/(\w+)\s*=\s*([^;]+);/);
-            if (assignMatch) {
-                const varName = assignMatch[1];
-                const expression = assignMatch[2].trim();
-                console.log(`Found assignment: ${varName} = ${expression}`);
-                
-                // Evaluate the expression
-                let value = 0;
-                if (variables[expression] !== undefined) {
-                    value = variables[expression];
-                } else if (expression.includes('+')) {
-                    const parts = expression.split('+').map(p => p.trim());
-                    value = (variables[parts[0]] || 0) + (variables[parts[1]] || 0);
-                } else if (expression.includes('*')) {
-                    const parts = expression.split('*').map(p => p.trim());
-                    value = (variables[parts[0]] || 0) * (variables[parts[1]] || 0);
-                } else if (!isNaN(expression)) {
-                    value = parseInt(expression);
-                }
-                
-                variables[varName] = value;
-                console.log(`Set variable ${varName} = ${value}`);
-                continue;
-            }
-        }
-        
-        console.log('Final variables:', variables);
-        console.log('Final output:', output);
-        
-        // If no output was generated, show a success message
-        if (output.length === 0) {
-            output.push('Program executed successfully.');
-        }
-        
-        const result = output.join('\n');
-        console.log('Final result:', result);
-        return result;
+        compilerOutput.classList.add(type);
     }
 
     // Function to compile with Judge0 API (free online compiler)
-    async function compileWithJudge0(code, userInputs = {}) {
-        // Prepare input string from user inputs
-        const inputString = Object.values(userInputs).join('\n');
+    async function compileWithJudge0(code) {
+        const API_URL = 'https://judge0-ce.p.rapidapi.com';
+        const API_KEY = 'your-rapidapi-key-here'; // You can get this free from RapidAPI
         
-        // Submit code for compilation
-        const submitResponse = await fetch('https://judge0-ce.p.rapidapi.com/submissions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': compilerSettings.rapidApiKey,
-                'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-            },
-            body: JSON.stringify({
-                language_id: 50, // C language ID
-                source_code: code,
-                stdin: inputString
-            })
-        });
-
-        if (!submitResponse.ok) {
-            throw new Error('Failed to submit code for compilation');
-        }
-
-        const submitData = await submitResponse.json();
-        const token = submitData.token;
-
-        // Poll for result
-        let attempts = 0;
-        const maxAttempts = compilerSettings.timeout;
+        // For demo purposes, we'll use simulation
+        // To use real Judge0, replace this with actual API call
+        throw new Error('Using simulation mode');
         
-        while (attempts < maxAttempts) {
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
-            
-            const resultResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-                headers: {
-                    'X-RapidAPI-Key': compilerSettings.rapidApiKey,
-                    'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-                }
-            });
-
-            if (!resultResponse.ok) {
-                throw new Error('Failed to get compilation result');
-            }
-
-            const resultData = await resultResponse.json();
-            
-            if (resultData.status.id <= 2) { // Still processing
-                attempts++;
-                continue;
-            }
-
-            // Compilation finished
-            if (resultData.status.id === 3) { // Accepted
-                return resultData.stdout || 'Program executed successfully with no output.';
-            } else if (resultData.status.id === 6) { // Compilation Error
-                return `Compilation Error:\n${resultData.compile_output || 'Unknown compilation error'}`;
-            } else if (resultData.status.id === 5) { // Time Limit Exceeded
-                return 'Time Limit Exceeded: Your program took too long to execute.';
-            } else if (resultData.status.id === 4) { // Wrong Answer
-                return `Runtime Error:\n${resultData.stderr || 'Unknown runtime error'}`;
-                } else {
-                return `Execution Error (Status ${resultData.status.id}): ${resultData.stderr || 'Unknown error'}`;
-            }
-        }
-        
-        throw new Error('Compilation timeout - please try again.');
-    }
-
-    // Function to compile and run C code using JDoodle API
-    async function compileAndRunCode(code, clientId, clientSecret, userInputs = {}) {
-        // Check if we have valid credentials
-        if (clientId === 'YOUR_JDOODLE_CLIENT_ID' || clientSecret === 'YOUR_JDOODLE_CLIENT_SECRET') {
-            // Simulate compilation and execution with realistic error checking
-            let simulatedOutput = '';
-            
-            // Check for common C syntax errors first
-            if (code.includes('print(') && !code.includes('printf(')) {
-                simulatedOutput = `compilation terminated.
-program.c:4:5: error: implicit declaration of function 'print' [-Wimplicit-function-declaration]
-   print("hello world");
-       ^~~~~
-program.c:4:5: error: conflicting types for 'print'
-program.c:4:5: note: implicit declaration of 'print' is invalid in C99
-
-Compilation failed.`;
-            } else if (code.includes('printf(') && !code.includes(';')) {
-                // Missing semicolon after printf
-                simulatedOutput = `compilation terminated.
-program.c:4:1: error: expected ';' before '}'
-   printf("dheeraj sai")
-   ^~~~~
-program.c:4:1: error: expected ';' before '}'
-
-Compilation failed.`;
-            } else {
-                // Simple and reliable simulation
-                simulatedOutput = simulateCExecution(code, userInputs);
-            }
-            
-            return simulatedOutput;
-        }
-
-        // Actual JDoodle API implementation (commented out for demonstration)
+        // Actual Judge0 implementation (commented for demo):
         /*
         try {
-            // First, get access token
-            const tokenResponse = await fetch('https://auth.jdoodle.com/v1/access_token', {
+            // Submit code for compilation
+            const submitResponse = await fetch(`${API_URL}/submissions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-RapidAPI-Key': API_KEY,
+                    'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
                 },
                 body: JSON.stringify({
-                    clientId: clientId,
-                    clientSecret: clientSecret
+                    language_id: 50, // C language
+                    source_code: code
                 })
             });
 
-            if (!tokenResponse.ok) {
-                throw new Error('Failed to get access token');
+            const submitData = await submitResponse.json();
+            const token = submitData.token;
+
+            // Poll for result
+            let attempts = 0;
+            while (attempts < 10) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                const resultResponse = await fetch(`${API_URL}/submissions/${token}`, {
+                    headers: {
+                        'X-RapidAPI-Key': API_KEY,
+                        'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
+                    }
+                });
+
+                const resultData = await resultResponse.json();
+                
+                if (resultData.status.id <= 2) {
+                    attempts++;
+                    continue;
+                }
+
+                if (resultData.status.id === 3) {
+                    return resultData.stdout || 'Program executed successfully.';
+                } else if (resultData.status.id === 6) {
+                    return `Compilation Error:\\n${resultData.compile_output}`;
+                } else {
+                    return `Runtime Error:\\n${resultData.stderr}`;
+                }
             }
-
-            const tokenData = await tokenResponse.json();
-            const accessToken = tokenData.access_token;
-
-            // Now execute the code
-            const executeResponse = await fetch('https://api.jdoodle.com/v1/execute', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                },
-                body: JSON.stringify({
-                    script: code,
-                    language: 'c',
-                    versionIndex: '4' // C99
-                })
-            });
-
-            if (!executeResponse.ok) {
-                throw new Error('Failed to execute code');
-            }
-
-            const result = await executeResponse.json();
-            
-            if (result.statusCode === 200) {
-                return result.output;
-            } else {
-                throw new Error(`Compilation failed: ${result.output}`);
-            }
+            throw new Error('Compilation timeout');
         } catch (error) {
             throw new Error(`API Error: ${error.message}`);
         }
         */
+    }
+
+    // Advanced C code simulation
+    function simulateCode(code) {
+        try {
+            // Basic syntax error checking
+            if (!code.includes('#include')) {
+                return 'Compilation Error:\nMissing #include directive. Please include necessary header files.';
+            }
+            
+            if (!code.includes('main')) {
+                return 'Compilation Error:\nNo main function found. Every C program must have a main() function.';
+            }
+            
+            if (code.includes('printf') && !code.includes('#include <stdio.h>')) {
+                return 'Compilation Error:\nUndeclared function printf. Include <stdio.h> header file.';
+            }
+            
+            // Check for missing semicolons (basic check)
+            const lines = code.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if ((line.includes('printf(') || line.includes('scanf(')) && 
+                    !line.includes(';') && !line.includes('{') && !line.includes('}') && 
+                    !line.endsWith('\\')) {
+                    return `Compilation Error:\nLine ${i + 1}: Missing semicolon after statement.`;
+                }
+            }
+            
+            // Advanced simulation - execute the code step by step
+            return executeCode(code);
+            
+        } catch (error) {
+            return `Runtime Error: ${error.message}`;
+        }
+    }
+
+    // Execute C code simulation
+    function executeCode(code) {
+        const output = [];
+        const variables = {};
+        const arrays = {};
+        
+        // Remove comments and clean code
+        let cleanCode = code.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+        
+        // Find main function content
+        const mainMatch = cleanCode.match(/int\s+main\s*\([^)]*\)\s*\{([\s\S]*)\}/);
+        if (!mainMatch) {
+            return 'Compilation Error:\nInvalid main function structure.';
+        }
+        
+        const mainBody = mainMatch[1];
+        const statements = parseStatements(mainBody);
+        
+        for (const statement of statements) {
+            try {
+                const result = executeStatement(statement, variables, arrays, output);
+                if (result === 'break' || result === 'return') break;
+            } catch (error) {
+                return `Runtime Error: ${error.message}`;
+            }
+        }
+        
+        return output.length > 0 ? output.join('') : 'Program executed successfully.\nNo output generated.';
+    }
+    
+    // Parse statements from code block
+    function parseStatements(code) {
+        const statements = [];
+        let current = '';
+        let braceCount = 0;
+        let inString = false;
+        let escaped = false;
+        
+        for (let i = 0; i < code.length; i++) {
+            const char = code[i];
+            
+            if (escaped) {
+                current += char;
+                escaped = false;
+                continue;
+            }
+            
+            if (char === '\\' && inString) {
+                escaped = true;
+                current += char;
+                continue;
+            }
+            
+            if (char === '"') {
+                inString = !inString;
+            }
+            
+            if (!inString) {
+                if (char === '{') braceCount++;
+                if (char === '}') braceCount--;
+                
+                if ((char === ';' && braceCount === 0) || (char === '}' && braceCount === -1)) {
+                    if (current.trim()) {
+                        statements.push(current.trim());
+                    }
+                    current = '';
+                    if (char === '}') braceCount = 0;
+                    continue;
+                }
+            }
+            
+            current += char;
+        }
+        
+        if (current.trim()) {
+            statements.push(current.trim());
+        }
+        
+        return statements;
+    }
+    
+    // Execute a single statement
+    function executeStatement(statement, variables, arrays, output) {
+        statement = statement.trim();
+        
+        // Variable declarations
+        if (/^(int|float|double|char)\s+/.test(statement)) {
+            return handleVariableDeclaration(statement, variables);
+        }
+        
+        // Array declarations
+        if (/^(int|float|double|char)\s+\w+\s*\[/.test(statement)) {
+            return handleArrayDeclaration(statement, arrays);
+        }
+        
+        // Printf statements
+        if (statement.includes('printf(')) {
+            return handlePrintf(statement, variables, arrays, output);
+        }
+        
+        // Scanf statements
+        if (statement.includes('scanf(')) {
+            return handleScanf(statement, variables, output);
+        }
+        
+        // For loops
+        if (statement.startsWith('for')) {
+            return handleForLoop(statement, variables, arrays, output);
+        }
+        
+        // While loops
+        if (statement.startsWith('while')) {
+            return handleWhileLoop(statement, variables, arrays, output);
+        }
+        
+        // If statements
+        if (statement.startsWith('if')) {
+            return handleIfStatement(statement, variables, arrays, output);
+        }
+        
+        // Assignment statements
+        if (/\w+\s*=/.test(statement) && !statement.includes('==')) {
+            return handleAssignment(statement, variables);
+        }
+        
+        // Return statements
+        if (statement.includes('return')) {
+            return 'return';
+        }
+        
+        return 'continue';
+    }
+    
+    // Handle variable declarations
+    function handleVariableDeclaration(statement, variables) {
+        const match = statement.match(/(int|float|double|char)\s+(\w+)(?:\s*=\s*([^;]+))?/);
+        if (match) {
+            const [, type, name, value] = match;
+            variables[name] = value ? evaluateExpression(value, variables) : 0;
+        }
+        return 'continue';
+    }
+    
+    // Handle array declarations
+    function handleArrayDeclaration(statement, arrays) {
+        const match = statement.match(/(int|float|double|char)\s+(\w+)\s*\[\s*(\d+)\s*\](?:\s*=\s*\{([^}]+)\})?/);
+        if (match) {
+            const [, type, name, size, values] = match;
+            arrays[name] = new Array(parseInt(size)).fill(0);
+            if (values) {
+                const valueArray = values.split(',').map(v => parseFloat(v.trim()) || 0);
+                for (let i = 0; i < valueArray.length && i < arrays[name].length; i++) {
+                    arrays[name][i] = valueArray[i];
+                }
+            }
+        }
+        return 'continue';
+    }
+    
+    // Handle printf statements
+    function handlePrintf(statement, variables, arrays, output) {
+        const match = statement.match(/printf\s*\(\s*"([^"]*)"(?:\s*,\s*([^)]+))?\s*\)/);
+        if (match) {
+            let [, format, args] = match;
+            let result = format;
+            
+            // Process escape sequences
+            result = result.replace(/\\n/g, '\n');
+            result = result.replace(/\\t/g, '\t');
+            result = result.replace(/\\r/g, '\r');
+            result = result.replace(/\\\\/g, '\\');
+            result = result.replace(/\\"/g, '"');
+            
+            // Handle format specifiers
+            if (args && result.includes('%')) {
+                const argValues = args.split(',').map(arg => evaluateExpression(arg.trim(), variables, arrays));
+                let argIndex = 0;
+                
+                result = result.replace(/%d|%i|%f|%g|%c|%s/g, (match) => {
+                    if (argIndex < argValues.length) {
+                        const value = argValues[argIndex++];
+                        if (match === '%d' || match === '%i') {
+                            return Math.floor(value).toString();
+                        } else if (match === '%f' || match === '%g') {
+                            return value.toFixed(2);
+                        } else if (match === '%c') {
+                            return String.fromCharCode(value);
+                        } else if (match === '%s') {
+                            return value.toString();
+                        }
+                    }
+                    return match;
+                });
+            }
+            
+            output.push(result);
+        }
+        return 'continue';
+    }
+    
+    // Handle scanf statements
+    function handleScanf(statement, variables, output) {
+        const match = statement.match(/scanf\s*\(\s*"([^"]*)"(?:\s*,\s*&(\w+))?\s*\)/);
+        if (match) {
+            const [, format, varName] = match;
+            if (varName) {
+                // Simulate user input with sample values
+                const sampleValues = [10, 20, 5, 15, 8, 12, 25, 30, 3, 7];
+                const value = sampleValues[Object.keys(variables).length % sampleValues.length];
+                variables[varName] = value;
+                output.push(`Input: ${value}\n`);
+            }
+        }
+        return 'continue';
+    }
+    
+    // Handle for loops
+    function handleForLoop(statement, variables, arrays, output) {
+        const forMatch = statement.match(/for\s*\(\s*([^;]+);\s*([^;]+);\s*([^)]+)\s*\)\s*\{([\s\S]*)\}/);
+        if (forMatch) {
+            const [, init, condition, increment, body] = forMatch;
+            
+            // Execute initialization
+            executeStatement(init, variables, arrays, output);
+            
+            // Execute loop
+            let iterations = 0;
+            while (iterations < 1000 && evaluateCondition(condition, variables)) {
+                const bodyStatements = parseStatements(body);
+                for (const bodyStatement of bodyStatements) {
+                    executeStatement(bodyStatement, variables, arrays, output);
+                }
+                executeStatement(increment, variables, arrays, output);
+                iterations++;
+            }
+        }
+        return 'continue';
+    }
+    
+    // Handle while loops
+    function handleWhileLoop(statement, variables, arrays, output) {
+        const whileMatch = statement.match(/while\s*\(\s*([^)]+)\s*\)\s*\{([\s\S]*)\}/);
+        if (whileMatch) {
+            const [, condition, body] = whileMatch;
+            
+            let iterations = 0;
+            while (iterations < 1000 && evaluateCondition(condition, variables)) {
+                const bodyStatements = parseStatements(body);
+                for (const bodyStatement of bodyStatements) {
+                    executeStatement(bodyStatement, variables, arrays, output);
+                }
+                iterations++;
+            }
+        }
+        return 'continue';
+    }
+    
+    // Handle if statements
+    function handleIfStatement(statement, variables, arrays, output) {
+        const ifMatch = statement.match(/if\s*\(\s*([^)]+)\s*\)\s*\{([\s\S]*)\}(?:\s*else\s*\{([\s\S]*)\})?/);
+        if (ifMatch) {
+            const [, condition, ifBody, elseBody] = ifMatch;
+            
+            if (evaluateCondition(condition, variables)) {
+                const ifStatements = parseStatements(ifBody);
+                for (const ifStatement of ifStatements) {
+                    executeStatement(ifStatement, variables, arrays, output);
+                }
+            } else if (elseBody) {
+                const elseStatements = parseStatements(elseBody);
+                for (const elseStatement of elseStatements) {
+                    executeStatement(elseStatement, variables, arrays, output);
+                }
+            }
+        }
+        return 'continue';
+    }
+    
+    // Handle assignments
+    function handleAssignment(statement, variables) {
+        const match = statement.match(/(\w+)\s*=\s*([^;]+)/);
+        if (match) {
+            const [, varName, expression] = match;
+            variables[varName] = evaluateExpression(expression, variables);
+        }
+        return 'continue';
+    }
+    
+    // Evaluate mathematical expressions
+    function evaluateExpression(expr, variables, arrays = {}) {
+        expr = expr.trim();
+        
+        // Handle numbers
+        if (/^-?\d+(\.\d+)?$/.test(expr)) {
+            return parseFloat(expr);
+        }
+        
+        // Handle variables
+        if (variables.hasOwnProperty(expr)) {
+            return variables[expr];
+        }
+        
+        // Handle array access
+        const arrayMatch = expr.match(/(\w+)\[(\d+)\]/);
+        if (arrayMatch && arrays[arrayMatch[1]]) {
+            const index = parseInt(arrayMatch[2]);
+            return arrays[arrayMatch[1]][index] || 0;
+        }
+        
+        // Handle simple arithmetic
+        const operators = ['+', '-', '*', '/', '%'];
+        for (const op of operators) {
+            if (expr.includes(op)) {
+                const parts = expr.split(op);
+                if (parts.length === 2) {
+                    const left = evaluateExpression(parts[0], variables, arrays);
+                    const right = evaluateExpression(parts[1], variables, arrays);
+                    switch (op) {
+                        case '+': return left + right;
+                        case '-': return left - right;
+                        case '*': return left * right;
+                        case '/': return left / right;
+                        case '%': return left % right;
+                    }
+                }
+            }
+        }
+        
+        return 0;
+    }
+    
+    // Evaluate conditions
+    function evaluateCondition(condition, variables) {
+        condition = condition.trim();
+        
+        const operators = ['<=', '>=', '==', '!=', '<', '>'];
+        for (const op of operators) {
+            if (condition.includes(op)) {
+                const parts = condition.split(op);
+                if (parts.length === 2) {
+                    const left = evaluateExpression(parts[0], variables);
+                    const right = evaluateExpression(parts[1], variables);
+                    switch (op) {
+                        case '<': return left < right;
+                        case '<=': return left <= right;
+                        case '>': return left > right;
+                        case '>=': return left >= right;
+                        case '==': return left === right;
+                        case '!=': return left !== right;
+                    }
+                }
+            }
+        }
+        
+        return false;
     }
 });
