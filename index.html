@@ -49,7 +49,10 @@
                 <div class="compiler-container">
                     <h3>Online C Compiler</h3>
                     <div class="compiler-editor">
-                        <textarea id="c-code-editor" placeholder="Write your C code here..." rows="15"></textarea>
+                        <div class="code-editor-wrapper">
+                            <div class="line-numbers" id="line-numbers"></div>
+                            <textarea id="c-code-editor" placeholder="Write your C code here..." rows="15"></textarea>
+                        </div>
                     </div>
                     <div class="compiler-controls">
                         <button id="run-code-btn" class="compiler-button">Run Code</button>

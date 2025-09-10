@@ -344,12 +344,40 @@ main {
     margin-bottom: 1.5rem;
 }
 
-#c-code-editor {
-    width: 100%;
-    min-height: 300px;
-    padding: 1rem;
+.code-editor-wrapper {
+    display: flex;
     border: 2px solid var(--border-color);
     border-radius: 8px;
+    background-color: var(--code-bg);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.code-editor-wrapper:focus-within {
+    border-color: var(--accent-color-2);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.line-numbers {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 1rem 0.5rem 1rem 1rem;
+    text-align: right;
+    user-select: none;
+    min-width: 60px;
+    border-right: 1px solid var(--border-color);
+    white-space: pre;
+    overflow: hidden;
+}
+
+#c-code-editor {
+    flex: 1;
+    min-height: 300px;
+    padding: 1rem;
+    border: none;
     background-color: var(--code-bg);
     color: var(--code-text);
     font-family: 'Fira Code', monospace;
@@ -357,12 +385,15 @@ main {
     line-height: 1.5;
     resize: vertical;
     outline: none;
-    transition: border-color 0.3s ease;
+    width: 70%;
+    max-width: 70%;
+    overflow: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
-#c-code-editor:focus {
-    border-color: var(--accent-color-2);
-    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+#c-code-editor::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .compiler-controls {
@@ -635,9 +666,17 @@ main {
         font-size: 1.3rem;
     }
 
+    .line-numbers {
+        font-size: 13px;
+        min-width: 50px;
+        padding: 1rem 0.3rem 1rem 0.8rem;
+    }
+
     #c-code-editor {
         min-height: 250px;
         font-size: 13px;
+        width: 75%;
+        max-width: 75%;
     }
 
     .compiler-controls {
