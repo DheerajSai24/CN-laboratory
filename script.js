@@ -10,14 +10,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevProgramBtn = document.getElementById('prev-program-btn');
     const nextProgramBtn = document.getElementById('next-program-btn');
     const themeToggleBtn = document.getElementById('theme-toggle'); // Get theme toggle button
+    
+    // Navbar elements
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const themeIcon = document.querySelector('.theme-icon');
 
     let currentWeekPrograms = null;
     let currentProgramIndex = 0;
+
+    // Mobile menu toggle
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
 
     // Theme toggle logic
     function applyTheme(isDarkMode) {
         document.body.classList.toggle('dark-mode', isDarkMode);
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        
+        // Update theme icon
+        if (themeIcon) {
+            themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+        }
     }
 
     // Check for saved theme preference on load
@@ -29,10 +55,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listener for theme toggle button
-    themeToggleBtn.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        applyTheme(!isDarkMode);
-    });
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            applyTheme(!isDarkMode);
+        });
+    }
+
+    // Navigation functionality for single-page sections (if present)
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('hidden');
+            section.classList.remove('active');
+        });
+        
+        // Show selected page
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.remove('hidden');
+            targetPage.classList.add('active');
+        }
+    }
+
+    // Set active navigation link
+    function setActiveNavLink(currentPage) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Extract current page from URL or set default
+        let pageName = currentPage || window.location.pathname.split('/').pop() || 'index.html';
+        if (pageName === '' || pageName === '/') pageName = 'index.html';
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === pageName) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Initialize active nav link based on current page
+    setActiveNavLink();
 
     // Placeholder for all week data
     const weeksData = {

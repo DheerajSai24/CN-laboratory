@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Computer Networks Laboratory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>CN Lab</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="recordings.html" class="nav-link">Recordings</a>
+                </li>
+                <li class="nav-item">
+                    <a href="notes.html" class="nav-link active">Notes</a>
+                </li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <h1 id="main-title" class="fade-in">Study Notes & Resources</h1>
+        <p class="header-subtitle">Download comprehensive notes, code files, and documentation</p>
+    </header>
+
+    <main class="notes-main">
+        <div class="notes-container">
+            <!-- Download Statistics -->
+            <div class="download-stats">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Total Documents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Lab Weeks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1.2MB</div>
+                    <div class="stat-label">Total Size</div>
+                </div>
+            </div>
+
+            <!-- Week 1 Notes -->
+            <section class="notes-week">
+                <div class="week-header">
+                    <h2 class="week-title">Week 1: Data Link Layer Framing Methods</h2>
+                    <div class="week-badge">3 Files</div>
+                </div>
+                
+                <div class="files-grid">
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type pdf">PDF</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Framing Methods Theory</h3>
+                            <p>Comprehensive notes covering character counting, character stuffing, and bit stuffing techniques.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 245 KB</span>
+                                <span class="file-pages">📚 15 pages</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week1-theory.pdf', 'Framing Methods Theory')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week1-theory.pdf')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type code">C</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Complete Source Code</h3>
+                            <p>All three framing method implementations with sample input/output and detailed comments.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 12 KB</span>
+                                <span class="file-pages">💻 3 programs</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week1-code.zip', 'Week 1 Source Code')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week1-code.zip')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type ppt">PPT</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Presentation Slides</h3>
+                            <p>Visual presentation with diagrams, flowcharts, and comparison tables for all framing methods.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 1.8 MB</span>
+                                <span class="file-pages">🎯 25 slides</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week1-slides.pptx', 'Week 1 Presentation')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week1-slides.pptx')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 2 Notes -->
+            <section class="notes-week">
+                <div class="week-header">
+                    <h2 class="week-title">Week 2: Error Detection and Correction</h2>
+                    <div class="week-badge">3 Files</div>
+                </div>
+                
+                <div class="files-grid">
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type pdf">PDF</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Error Control Theory</h3>
+                            <p>Mathematical foundations of checksum, CRC, and Hamming code with worked examples.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 398 KB</span>
+                                <span class="file-pages">📚 22 pages</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week2-theory.pdf', 'Error Control Theory')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week2-theory.pdf')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type code">C</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Algorithm Implementations</h3>
+                            <p>Checksum, CRC-16, and Hamming(7,4) code implementations with test cases.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 18 KB</span>
+                                <span class="file-pages">💻 3 programs</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week2-code.zip', 'Week 2 Source Code')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week2-code.zip')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type doc">DOC</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Lab Manual</h3>
+                            <p>Step-by-step procedures, expected outputs, and troubleshooting guide for all experiments.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 156 KB</span>
+                                <span class="file-pages">📋 12 pages</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week2-manual.docx', 'Week 2 Lab Manual')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week2-manual.docx')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 3 Notes -->
+            <section class="notes-week">
+                <div class="week-header">
+                    <h2 class="week-title">Week 3: Flow Control Mechanisms</h2>
+                    <div class="week-badge">3 Files</div>
+                </div>
+                
+                <div class="files-grid">
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type pdf">PDF</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Flow Control Protocols</h3>
+                            <p>Detailed analysis of Stop-and-Wait, Sliding Window, and ARQ protocols with efficiency calculations.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 312 KB</span>
+                                <span class="file-pages">📚 18 pages</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week3-theory.pdf', 'Flow Control Protocols')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week3-theory.pdf')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type code">C</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Protocol Simulations</h3>
+                            <p>Simulated implementations of flow control protocols with timing and performance analysis.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 25 KB</span>
+                                <span class="file-pages">💻 3 programs</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week3-code.zip', 'Week 3 Source Code')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week3-code.zip')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type xls">XLS</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Performance Calculator</h3>
+                            <p>Excel spreadsheet for calculating throughput, efficiency, and optimal window sizes.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 89 KB</span>
+                                <span class="file-pages">📊 5 sheets</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week3-calculator.xlsx', 'Performance Calculator')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week3-calculator.xlsx')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 4 Notes -->
+            <section class="notes-week">
+                <div class="week-header">
+                    <h2 class="week-title">Week 4: Routing Algorithms</h2>
+                    <div class="week-badge">3 Files</div>
+                </div>
+                
+                <div class="files-grid">
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type pdf">PDF</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Routing Theory</h3>
+                            <p>Comprehensive guide to shortest path algorithms with complexity analysis and real-world applications.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 425 KB</span>
+                                <span class="file-pages">📚 28 pages</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week4-theory.pdf', 'Routing Theory')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week4-theory.pdf')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type code">C</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Routing Algorithms</h3>
+                            <p>Complete implementations of Dijkstra's, Bellman-Ford, and Floyd-Warshall algorithms.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 22 KB</span>
+                                <span class="file-pages">💻 3 programs</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week4-code.zip', 'Week 4 Source Code')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week4-code.zip')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <span class="file-type ppt">PPT</span>
+                        </div>
+                        <div class="file-info">
+                            <h3>Algorithm Visualization</h3>
+                            <p>Interactive presentations with step-by-step algorithm execution and network topology examples.</p>
+                            <div class="file-meta">
+                                <span class="file-size">📄 2.1 MB</span>
+                                <span class="file-pages">🎯 35 slides</span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="download-btn" onclick="downloadFile('week4-visualization.pptx', 'Algorithm Visualization')">
+                                <span class="download-icon">⬇️</span>
+                                Download
+                            </button>
+                            <button class="preview-btn" onclick="previewFile('week4-visualization.pptx')">
+                                <span class="preview-icon">👁️</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bulk Download Section -->
+            <section class="bulk-download">
+                <div class="bulk-header">
+                    <h2>Complete Course Materials</h2>
+                    <p>Download all resources in a single package</p>
+                </div>
+                <div class="bulk-cards">
+                    <div class="bulk-card">
+                        <div class="bulk-icon">📦</div>
+                        <div class="bulk-info">
+                            <h3>All Week Notes</h3>
+                            <p>Complete PDF collection</p>
+                            <span class="bulk-size">1.4 MB</span>
+                        </div>
+                        <button class="bulk-download-btn" onclick="downloadFile('all-notes.zip', 'All Week Notes')">
+                            Download All PDFs
+                        </button>
+                    </div>
+
+                    <div class="bulk-card">
+                        <div class="bulk-icon">💻</div>
+                        <div class="bulk-info">
+                            <h3>All Source Code</h3>
+                            <p>Complete code repository</p>
+                            <span class="bulk-size">77 KB</span>
+                        </div>
+                        <button class="bulk-download-btn" onclick="downloadFile('all-code.zip', 'All Source Code')">
+                            Download All Code
+                        </button>
+                    </div>
+
+                    <div class="bulk-card">
+                        <div class="bulk-icon">🎓</div>
+                        <div class="bulk-info">
+                            <h3>Complete Package</h3>
+                            <p>Everything included</p>
+                            <span class="bulk-size">5.2 MB</span>
+                        </div>
+                        <button class="bulk-download-btn" onclick="downloadFile('complete-package.zip', 'Complete Package')">
+                            Download Everything
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>Download Started</h3>
+            </div>
+            <div class="modal-body">
+                <div class="download-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="download-filename">Preparing download...</span>
+                        <span id="download-percentage">0%</span>
+                    </div>
+                </div>
+                <p>Your download will begin shortly. The file will be saved to your default downloads folder.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Download functionality
+        function downloadFile(filename, displayName) {
+            // Show download modal
+            const modal = document.getElementById('download-modal');
+            const filenameElement = document.getElementById('download-filename');
+            const progressFill = document.getElementById('progress-fill');
+            const percentageElement = document.getElementById('download-percentage');
+            
+            modal.classList.remove('hidden');
+            filenameElement.textContent = displayName;
+            
+            // Simulate download progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressFill.style.width = progress + '%';
+                percentageElement.textContent = Math.round(progress) + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        // Create and trigger download
+                        const link = document.createElement('a');
+                        link.href = '#'; // In real implementation, this would be the actual file URL
+                        link.download = filename;
+                        link.click();
+                    }, 1000);
+                }
+            }, 200);
+        }
+        
+        function previewFile(filename) {
+            alert(`Preview functionality for ${filename} would open here in a real implementation.`);
+        }
+        
+        // Close modal functionality
+        document.querySelector('.close-modal').addEventListener('click', () => {
+            document.getElementById('download-modal').classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('download-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'download-modal') {
+                document.getElementById('download-modal').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

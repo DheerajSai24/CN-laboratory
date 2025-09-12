@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Computer Networks Laboratory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>CN Lab</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link active">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="recordings.html" class="nav-link">Recordings</a>
+                </li>
+                <li class="nav-item">
+                    <a href="notes.html" class="nav-link">Notes</a>
+                </li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <h1 id="main-title" class="fade-in">About CN Laboratory</h1>
+        <p class="header-subtitle">Detailed explanations of all computer networks concepts</p>
+    </header>
+
+    <main class="about-main">
+        <div class="about-container">
+            <!-- Week 1: Data Link Layer Framing Methods -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 1: Data Link Layer Framing Methods</h2>
+                    <div class="week-badge">3 Programs</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Data Link Layer framing is essential for organizing data transmission between network nodes. This week explores various framing methods that ensure data integrity and proper synchronization between sender and receiver.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Character Counting</h4>
+                                <span class="difficulty-badge easy">Basic</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/FF6B6B/ffffff?text=Character+Counting" alt="Character Counting Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Uses a count field to specify the number of characters in the frame.</p>
+                                <p><strong>Advantage:</strong> Simple implementation, minimal overhead.</p>
+                                <p><strong>Disadvantage:</strong> Vulnerable to count field corruption, poor error recovery.</p>
+                                <p><strong>Use Case:</strong> Early network protocols, educational purposes.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Character Stuffing</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/4ECDC4/ffffff?text=Character+Stuffing" alt="Character Stuffing Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Uses special delimiter characters (STX/ETX) to mark frame boundaries.</p>
+                                <p><strong>Advantage:</strong> Better error recovery, frame boundaries clearly marked.</p>
+                                <p><strong>Disadvantage:</strong> Need to handle special characters in data (escape sequences).</p>
+                                <p><strong>Use Case:</strong> Text-based protocols, legacy systems.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Bit Stuffing</h4>
+                                <span class="difficulty-badge hard">Advanced</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/9B59B6/ffffff?text=Bit+Stuffing" alt="Bit Stuffing Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Uses unique bit patterns as frame delimiters, stuffing bits to prevent false flags.</p>
+                                <p><strong>Advantage:</strong> Works with any data type, efficient bandwidth usage.</p>
+                                <p><strong>Disadvantage:</strong> Complex implementation, bit-level manipulation required.</p>
+                                <p><strong>Use Case:</strong> HDLC, PPP protocols, modern networking.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand the need for frame delimitation in data communication</li>
+                            <li>Compare different framing methods and their trade-offs</li>
+                            <li>Implement basic framing algorithms in C programming</li>
+                            <li>Analyze error scenarios and recovery mechanisms</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 2: CRC Code Implementation -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 2: CRC Code Implementation</h2>
+                    <div class="week-badge">Error Detection</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Cyclic Redundancy Check (CRC) is a powerful error-detecting code used in digital communication networks. It uses polynomial division to generate check bits that detect transmission errors with high probability.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>CRC Algorithm</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/00d4ff/ffffff?text=CRC+Algorithm" alt="CRC Algorithm Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Detects errors in data transmission using polynomial mathematics.</p>
+                                <p><strong>Advantage:</strong> High error detection rate, standardized polynomials available.</p>
+                                <p><strong>Disadvantage:</strong> More complex than simple checksum methods.</p>
+                                <p><strong>Use Case:</strong> Ethernet frames, WiFi protocols, storage devices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand polynomial division in error detection</li>
+                            <li>Implement CRC-16 algorithm in C programming</li>
+                            <li>Analyze CRC error detection capabilities</li>
+                            <li>Compare CRC with other error detection methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 3: Sliding Window Protocol -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 3: Sliding Window Protocol (Go-Back-N)</h2>
+                    <div class="week-badge">Flow Control</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Sliding Window Protocol allows multiple frames to be transmitted before receiving acknowledgment. Go-Back-N is a specific implementation that ensures proper sequencing and flow control.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Go-Back-N Protocol</h4>
+                                <span class="difficulty-badge hard">Advanced</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/6f42c1/ffffff?text=Go+Back+N" alt="Go-Back-N Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Efficient data transmission with error recovery mechanism.</p>
+                                <p><strong>Advantage:</strong> Pipelined transmission, good throughput efficiency.</p>
+                                <p><strong>Disadvantage:</strong> May retransmit unnecessary frames on errors.</p>
+                                <p><strong>Use Case:</strong> TCP protocol, reliable data transfer protocols.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand window-based flow control mechanisms</li>
+                            <li>Implement Go-Back-N protocol simulation</li>
+                            <li>Calculate protocol efficiency and throughput</li>
+                            <li>Analyze error recovery strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 4: Dijkstra's Shortest Path Algorithm -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 4: Dijkstra's Shortest Path Algorithm</h2>
+                    <div class="week-badge">Routing</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Dijkstra's algorithm finds the shortest path between nodes in a network. It's fundamental to routing protocols like OSPF and ensures optimal path selection in computer networks.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Shortest Path Algorithm</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/8a2be2/ffffff?text=Dijkstra+Algorithm" alt="Dijkstra Algorithm Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Find optimal routes in network topology.</p>
+                                <p><strong>Advantage:</strong> Guaranteed optimal solution, widely applicable.</p>
+                                <p><strong>Disadvantage:</strong> Requires global network knowledge.</p>
+                                <p><strong>Use Case:</strong> OSPF routing protocol, GPS navigation systems.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand graph theory applications in networking</li>
+                            <li>Implement Dijkstra's algorithm for network routing</li>
+                            <li>Analyze algorithm complexity and performance</li>
+                            <li>Compare with other routing algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 5: Broadcast Tree for a Subnet -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 5: Broadcast Tree for a Subnet</h2>
+                    <div class="week-badge">Broadcasting</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>A broadcast tree connects all nodes in a subnet for efficient message broadcasting. It minimizes redundant paths and prevents broadcast storms in network segments.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Spanning Tree Algorithm</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/ff6b6b/ffffff?text=Broadcast+Tree" alt="Broadcast Tree Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Efficient broadcast message distribution in subnets.</p>
+                                <p><strong>Advantage:</strong> Prevents broadcast storms, optimizes bandwidth.</p>
+                                <p><strong>Disadvantage:</strong> Single point of failure at root node.</p>
+                                <p><strong>Use Case:</strong> Ethernet switching, network discovery protocols.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand broadcast communication in networks</li>
+                            <li>Implement BFS-based spanning tree algorithm</li>
+                            <li>Analyze broadcast efficiency and overhead</li>
+                            <li>Study network topology optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 6: Distance Vector Routing Algorithm -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 6: Distance Vector Routing Algorithm</h2>
+                    <div class="week-badge">Dynamic Routing</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Distance Vector Routing is a dynamic routing algorithm where each router maintains distance vectors and exchanges them with neighbors. It's the foundation of protocols like RIP.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Bellman-Ford Algorithm</h4>
+                                <span class="difficulty-badge hard">Advanced</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/4ecdc4/ffffff?text=Distance+Vector" alt="Distance Vector Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Distributed routing with automatic route discovery.</p>
+                                <p><strong>Advantage:</strong> Simple implementation, automatic convergence.</p>
+                                <p><strong>Disadvantage:</strong> Count-to-infinity problem, slow convergence.</p>
+                                <p><strong>Use Case:</strong> RIP protocol, small to medium networks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand distributed routing algorithms</li>
+                            <li>Implement distance vector protocol simulation</li>
+                            <li>Analyze convergence properties and limitations</li>
+                            <li>Study routing loop prevention techniques</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 7: Data Encryption and Decryption -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 7: Data Encryption and Decryption</h2>
+                    <div class="week-badge">Security</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Data encryption converts plaintext to ciphertext for secure transmission. This week explores basic encryption algorithms and their applications in network security.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Caesar Cipher</h4>
+                                <span class="difficulty-badge easy">Basic</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/ffbd2e/ffffff?text=Encryption" alt="Encryption Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Basic symmetric encryption for data confidentiality.</p>
+                                <p><strong>Advantage:</strong> Simple implementation, fast processing.</p>
+                                <p><strong>Disadvantage:</strong> Easily breakable, weak security.</p>
+                                <p><strong>Use Case:</strong> Educational purposes, basic data obfuscation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand fundamental encryption concepts</li>
+                            <li>Implement basic symmetric encryption algorithms</li>
+                            <li>Analyze encryption strength and vulnerabilities</li>
+                            <li>Study applications in network security</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 8: Congestion Control (Leaky Bucket) -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 8: Congestion Control (Leaky Bucket)</h2>
+                    <div class="week-badge">Traffic Shaping</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Leaky Bucket algorithm is a traffic shaping technique for congestion control. It regulates data flow rates and prevents network overloads by smoothing bursty traffic.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Traffic Shaping Algorithm</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/569cd6/ffffff?text=Leaky+Bucket" alt="Leaky Bucket Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Regulate data flow and prevent network congestion.</p>
+                                <p><strong>Advantage:</strong> Smooths bursty traffic, maintains network stability.</p>
+                                <p><strong>Disadvantage:</strong> May introduce delays, buffer overflow possible.</p>
+                                <p><strong>Use Case:</strong> ISP traffic management, QoS implementations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand congestion control mechanisms</li>
+                            <li>Implement leaky bucket algorithm simulation</li>
+                            <li>Analyze traffic shaping effectiveness</li>
+                            <li>Study Quality of Service (QoS) concepts</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 9: Frame Sorting Technique -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 9: Frame Sorting Technique (Buffers)</h2>
+                    <div class="week-badge">Buffer Management</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Frame sorting handles out-of-order packet delivery using buffer management. This is crucial for applications requiring ordered data delivery such as streaming and file transfers.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Buffer Management</h4>
+                                <span class="difficulty-badge medium">Intermediate</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/dcdcaa/ffffff?text=Frame+Sorting" alt="Frame Sorting Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Reorder out-of-sequence frames for proper delivery.</p>
+                                <p><strong>Advantage:</strong> Maintains data integrity, handles network variations.</p>
+                                <p><strong>Disadvantage:</strong> Requires additional memory, processing overhead.</p>
+                                <p><strong>Use Case:</strong> TCP protocol, video streaming, file transfers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand packet reordering challenges</li>
+                            <li>Study buffer management strategies</li>
+                            <li>Analyze memory efficiency techniques</li>
+                            <li>Learn sequence number handling</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 10: Packet Capture and Analysis -->
+            <section class="week-section">
+                <div class="week-header">
+                    <h2 class="week-title">Week 10: Packet Capture and Analysis (Wireshark Concept)</h2>
+                    <div class="week-badge">Network Analysis</div>
+                </div>
+                
+                <div class="week-content">
+                    <div class="concept-overview">
+                        <h3>Overview</h3>
+                        <p>Packet capture and analysis involves intercepting and examining network traffic. Tools like Wireshark provide insights for troubleshooting, security analysis, and network monitoring.</p>
+                    </div>
+
+                    <div class="concepts-grid">
+                        <div class="concept-card">
+                            <div class="concept-header">
+                                <h4>Network Protocol Analysis</h4>
+                                <span class="difficulty-badge hard">Advanced</span>
+                            </div>
+                            <div class="concept-image">
+                                <img src="https://via.placeholder.com/350x200/b5cea8/ffffff?text=Packet+Analysis" alt="Packet Analysis Diagram">
+                            </div>
+                            <div class="concept-description">
+                                <p><strong>Purpose:</strong> Analyze network traffic for troubleshooting and security.</p>
+                                <p><strong>Advantage:</strong> Deep protocol insights, comprehensive analysis.</p>
+                                <p><strong>Disadvantage:</strong> Requires expertise, potential privacy concerns.</p>
+                                <p><strong>Use Case:</strong> Network diagnostics, security monitoring, performance analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>Learning Objectives</h3>
+                        <ul>
+                            <li>Understand packet structure and encapsulation</li>
+                            <li>Learn traffic filtering and analysis techniques</li>
+                            <li>Study network protocol hierarchies</li>
+                            <li>Master network troubleshooting methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
