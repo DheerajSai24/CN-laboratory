@@ -1179,16 +1179,18 @@ main {
 
 .videos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem 0;
 }
 
 .video-card {
     background-color: var(--bg-primary);
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: 1.8rem;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .video-card:hover {
@@ -1200,10 +1202,17 @@ main {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    margin-bottom: 1rem;
-    border-radius: 8px;
+    padding-bottom: 56.25%; /* Perfect 16:9 aspect ratio for clear thumbnails */
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
 }
 
 .video-wrapper iframe {
@@ -1212,14 +1221,23 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
+    border: none;
+    background-color: #000;
+}
+
+.video-info {
+    margin-top: 1.2rem;
 }
 
 .video-info h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    color: var(--accent-color-1);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
     margin-bottom: 0.8rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
 }
 
 .video-info p {
@@ -1640,7 +1658,8 @@ main {
     }
     
     .video-wrapper {
-        padding-bottom: 75%; /* Adjust for mobile */
+        padding-bottom: 56.25%; /* Perfect 16:9 aspect ratio on mobile too */
+        margin-bottom: 1.2rem;
     }
     
     .week-header {
