@@ -40,634 +40,105 @@
 
     <header class="main-header">
         <h1 id="main-title" class="fade-in">Study Notes & Resources</h1>
-        <p class="header-subtitle">Download comprehensive notes, code files, and documentation</p>
+        <p class="header-subtitle">Download comprehensive notes for all weeks</p>
     </header>
 
     <main class="notes-main">
         <div class="notes-container">
-            <!-- Week 1 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 1: Data Link Layer Framing Methods</h2>
-                    <div class="week-badge">4 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Lecture Notes</h3>
-                            <p>Comprehensive overview of character counting, character stuffing, and bit stuffing techniques for frame delimitation.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.5 MB</span>
-                                <span class="pages">15 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">⚙️</div>
-                        <div class="note-info">
-                            <h3>Lab Manual</h3>
-                            <p>Step-by-step implementation guide for all three framing methods with practical examples and code snippets.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">3.2 MB</span>
-                                <span class="pages">22 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Source Code</h3>
-                            <p>Complete implementations in C++ and Python for character counting, stuffing, and bit stuffing algorithms.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">156 KB</span>
-                                <span class="pages">8 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📝</div>
-                        <div class="note-info">
-                            <h3>Assignment</h3>
-                            <p>Practice problems and exercises covering frame detection, error handling, and efficiency analysis of framing methods.</p>
-                            <div class="note-meta">
-                                <span class="file-type">DOCX</span>
-                                <span class="file-size">890 KB</span>
-                                <span class="pages">8 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+            <div class="week-cards-grid">
+                <!-- Week 1 -->
+                <div class="week-card note-week-card" data-week="1">
+                    <div class="week-card-content">
+                        <h3>Week 1</h3>
+                        <p>Data Link Layer Framing Methods</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(1)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 2 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 2: CRC Code Implementation</h2>
-                    <div class="week-badge">3 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>CRC Theory Notes</h3>
-                            <p>Mathematical foundations of Cyclic Redundancy Check, polynomial division, and generator polynomials.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.8 MB</span>
-                                <span class="pages">12 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>CRC Implementation</h3>
-                            <p>Complete C++ and Python implementations with CRC-8, CRC-16, and CRC-32 algorithms and test cases.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">234 KB</span>
-                                <span class="pages">6 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📝</div>
-                        <div class="note-info">
-                            <h3>Problem Set</h3>
-                            <p>Comprehensive exercises on CRC calculation, error detection capabilities, and performance analysis.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.2 MB</span>
-                                <span class="pages">10 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 2 -->
+                <div class="week-card note-week-card" data-week="2">
+                    <div class="week-card-content">
+                        <h3>Week 2</h3>
+                        <p>CRC Code Implementation</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(2)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 3 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 3: Sliding Window Protocol (Go-Back-N)</h2>
-                    <div class="week-badge">4 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Protocol Theory</h3>
-                            <p>Detailed explanation of sliding window mechanism, sequence numbers, and acknowledgment strategies.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.1 MB</span>
-                                <span class="pages">18 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">⚙️</div>
-                        <div class="note-info">
-                            <h3>Lab Implementation</h3>
-                            <p>Hands-on guide for implementing Go-Back-N protocol with sender and receiver simulation programs.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.8 MB</span>
-                                <span class="pages">16 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Simulation Code</h3>
-                            <p>Complete network simulation with packet loss, timeout handling, and performance metrics visualization.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">345 KB</span>
-                                <span class="pages">12 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📊</div>
-                        <div class="note-info">
-                            <h3>Analysis Report</h3>
-                            <p>Performance comparison between Stop-and-Wait and Go-Back-N protocols with throughput analysis.</p>
-                            <div class="note-meta">
-                                <span class="file-type">DOCX</span>
-                                <span class="file-size">1.4 MB</span>
-                                <span class="pages">12 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 3 -->
+                <div class="week-card note-week-card" data-week="3">
+                    <div class="week-card-content">
+                        <h3>Week 3</h3>
+                        <p>Sliding Window Protocol (Go-Back-N)</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(3)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 4 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 4: Dijkstra's Shortest Path Algorithm</h2>
-                    <div class="week-badge">3 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Algorithm Notes</h3>
-                            <p>Complete explanation of Dijkstra's algorithm with step-by-step examples and time complexity analysis.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.9 MB</span>
-                                <span class="pages">14 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Implementation Code</h3>
-                            <p>Optimized implementations using priority queues, adjacency lists, and visual network topology examples.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">187 KB</span>
-                                <span class="pages">8 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🗺️</div>
-                        <div class="note-info">
-                            <h3>Network Topologies</h3>
-                            <p>Sample network graphs and routing tables with real-world routing protocol applications and case studies.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">3.1 MB</span>
-                                <span class="pages">20 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 4 -->
+                <div class="week-card note-week-card" data-week="4">
+                    <div class="week-card-content">
+                        <h3>Week 4</h3>
+                        <p>Dijkstra's Shortest Path Algorithm</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(4)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 5 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 5: Broadcast Tree for a Subnet</h2>
-                    <div class="week-badge">3 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Spanning Tree Theory</h3>
-                            <p>Comprehensive coverage of spanning tree algorithms, broadcast storm prevention, and tree construction methods.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.3 MB</span>
-                                <span class="pages">16 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Tree Algorithms</h3>
-                            <p>Implementation of Kruskal's and Prim's algorithms for minimum spanning tree with network applications.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">298 KB</span>
-                                <span class="pages">10 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🌐</div>
-                        <div class="note-info">
-                            <h3>Network Examples</h3>
-                            <p>Real subnet topologies and broadcast tree construction with Ethernet bridging and VLAN configurations.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.7 MB</span>
-                                <span class="pages">18 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 5 -->
+                <div class="week-card note-week-card" data-week="5">
+                    <div class="week-card-content">
+                        <h3>Week 5</h3>
+                        <p>Broadcast Tree for a Subnet</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(5)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 6 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 6: Distance Vector Routing Algorithm</h2>
-                    <div class="week-badge">4 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Routing Theory</h3>
-                            <p>Complete guide to distance vector routing with Bellman-Ford equation and distributed algorithm principles.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.6 MB</span>
-                                <span class="pages">20 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Simulation Code</h3>
-                            <p>Multi-node network simulation with routing table updates, convergence analysis, and count-to-infinity problem.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">412 KB</span>
-                                <span class="pages">15 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📊</div>
-                        <div class="note-info">
-                            <h3>Protocol Analysis</h3>
-                            <p>Detailed comparison of RIP versions, convergence time analysis, and routing loop prevention techniques.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.8 MB</span>
-                                <span class="pages">14 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🔧</div>
-                        <div class="note-info">
-                            <h3>Lab Exercise</h3>
-                            <p>Hands-on configuration of RIP protocol with network topology design and troubleshooting scenarios.</p>
-                            <div class="note-meta">
-                                <span class="file-type">DOCX</span>
-                                <span class="file-size">1.6 MB</span>
-                                <span class="pages">12 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 6 -->
+                <div class="week-card note-week-card" data-week="6">
+                    <div class="week-card-content">
+                        <h3>Week 6</h3>
+                        <p>Distance Vector Routing Algorithm</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(6)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 7 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 7: Data Encryption and Decryption</h2>
-                    <div class="week-badge">4 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Cryptography Basics</h3>
-                            <p>Introduction to symmetric and asymmetric encryption, key management, and security protocols in networks.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.4 MB</span>
-                                <span class="pages">18 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🔐</div>
-                        <div class="note-info">
-                            <h3>Encryption Algorithms</h3>
-                            <p>Implementation of Caesar cipher, DES, AES, and RSA algorithms with practical examples and security analysis.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">325 KB</span>
-                                <span class="pages">12 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🛡️</div>
-                        <div class="note-info">
-                            <h3>Network Security</h3>
-                            <p>SSL/TLS protocols, VPN implementation, and secure communication channels in computer networks.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">3.2 MB</span>
-                                <span class="pages">22 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">⚙️</div>
-                        <div class="note-info">
-                            <h3>Practical Lab</h3>
-                            <p>Step-by-step implementation of secure file transfer and encrypted communication protocols.</p>
-                            <div class="note-meta">
-                                <span class="file-type">DOCX</span>
-                                <span class="file-size">1.9 MB</span>
-                                <span class="pages">15 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 7 -->
+                <div class="week-card note-week-card" data-week="7">
+                    <div class="week-card-content">
+                        <h3>Week 7</h3>
+                        <p>Data Encryption and Decryption</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(7)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 8 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 8: Congestion Control (Leaky Bucket)</h2>
-                    <div class="week-badge">3 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Traffic Shaping Theory</h3>
-                            <p>Comprehensive study of congestion control mechanisms, QoS implementation, and bandwidth management techniques.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.1 MB</span>
-                                <span class="pages">16 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Leaky Bucket Algorithm</h3>
-                            <p>Implementation of leaky bucket and token bucket algorithms with performance comparison and optimization.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">267 KB</span>
-                                <span class="pages">9 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📈</div>
-                        <div class="note-info">
-                            <h3>QoS Analysis</h3>
-                            <p>Quality of Service metrics, traffic classification, and performance evaluation of congestion control algorithms.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.7 MB</span>
-                                <span class="pages">13 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 8 -->
+                <div class="week-card note-week-card" data-week="8">
+                    <div class="week-card-content">
+                        <h3>Week 8</h3>
+                        <p>Congestion Control (Leaky Bucket)</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(8)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 9 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 9: Frame Sorting Technique (Buffers)</h2>
-                    <div class="week-badge">3 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Buffer Management</h3>
-                            <p>Advanced techniques for handling out-of-order frames, buffer allocation strategies, and memory optimization.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">2.0 MB</span>
-                                <span class="pages">15 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">💻</div>
-                        <div class="note-info">
-                            <h3>Sorting Algorithms</h3>
-                            <p>Implementation of frame sorting algorithms with priority queues, sequence number handling, and reordering techniques.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">198 KB</span>
-                                <span class="pages">7 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">⚡</div>
-                        <div class="note-info">
-                            <h3>Performance Study</h3>
-                            <p>Comparative analysis of different buffer management strategies and their impact on network performance.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">1.5 MB</span>
-                                <span class="pages">11 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                <!-- Week 9 -->
+                <div class="week-card note-week-card" data-week="9">
+                    <div class="week-card-content">
+                        <h3>Week 9</h3>
+                        <p>Frame Sorting Technique (Buffers)</p>
+                        <button class="download-notes-btn" onclick="downloadNotes(9)">📥 Download Notes</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- Week 10 Notes -->
-            <section class="notes-week">
-                <div class="week-header">
-                    <h2 class="week-title">Week 10: Packet Capture and Analysis (Wireshark Concept)</h2>
-                    <div class="week-badge">4 Files</div>
-                </div>
-                
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <div class="note-icon">📄</div>
-                        <div class="note-info">
-                            <h3>Wireshark Guide</h3>
-                            <p>Complete tutorial on network packet analysis, protocol dissection, and traffic monitoring techniques.</p>
-                            <div class="note-meta">
-                                <span class="file-type">PDF</span>
-                                <span class="file-size">4.2 MB</span>
-                                <span class="pages">28 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
+                <!-- Week 10 -->
+                <div class="week-card note-week-card" data-week="10">
+                    <div class="week-card-content">
+                        <h3>Week 10</h3>
+                        <p>Packet Capture and Analysis (Wireshark)</p>
+                        <div class="week-card-image">
+                            <img src="assets/week10.jpg" alt="Week 10 - Wireshark Analysis">
                         </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🔍</div>
-                        <div class="note-info">
-                            <h3>Capture Files</h3>
-                            <p>Sample PCAP files with HTTP, TCP, UDP, and various protocol captures for hands-on analysis practice.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">5.8 MB</span>
-                                <span class="pages">20 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">📊</div>
-                        <div class="note-info">
-                            <h3>Analysis Templates</h3>
-                            <p>Pre-configured filters, colorization rules, and analysis templates for common network troubleshooting scenarios.</p>
-                            <div class="note-meta">
-                                <span class="file-type">ZIP</span>
-                                <span class="file-size">145 KB</span>
-                                <span class="pages">8 files</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
-                    </div>
-
-                    <div class="note-card">
-                        <div class="note-icon">🔧</div>
-                        <div class="note-info">
-                            <h3>Lab Exercises</h3>
-                            <p>Practical exercises for network security analysis, performance monitoring, and protocol troubleshooting.</p>
-                            <div class="note-meta">
-                                <span class="file-type">DOCX</span>
-                                <span class="file-size">2.3 MB</span>
-                                <span class="pages">18 pages</span>
-                            </div>
-                            <button class="download-btn">📥 Download</button>
-                        </div>
+                        <button class="download-notes-btn" onclick="downloadNotes(10)">� Download Notes</button>
                     </div>
                 </div>
-            </section>
-
-            <!-- Summary Section -->
-            <section class="notes-summary">
-                <div class="summary-header">
-                    <h2>Course Resources Summary</h2>
-                    <p>Complete collection of notes, implementations, and resources for all 10 weeks</p>
-                </div>
-                <div class="summary-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">35</div>
-                        <div class="stat-label">Total Files</div>
-                        <div class="stat-desc">Lecture notes, lab manuals, and assignments</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">67MB</div>
-                        <div class="stat-label">Total Size</div>
-                        <div class="stat-desc">Comprehensive course materials</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">520+</div>
-                        <div class="stat-label">Pages</div>
-                        <div class="stat-desc">Detailed documentation and examples</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">85+</div>
-                        <div class="stat-label">Code Files</div>
-                        <div class="stat-desc">Implementations and simulations</div>
-                    </div>
-                </div>
-                <div class="bulk-download">
-                    <button class="bulk-btn">📦 Download All Resources</button>
-                    <p>Get the complete course package (67MB ZIP file)</p>
-                </div>
-            </section>
+            </div>
         </div>
     </main>
 
@@ -695,6 +166,43 @@
 
     <script src="script.js"></script>
     <script>
+        // Download notes function
+        function downloadNotes(weekNumber) {
+            // You can later provide the actual PDF URLs here
+            const weekUrls = {
+                1: 'notes/week1-data-link-layer-framing.pdf',
+                2: 'notes/week2-crc-code-implementation.pdf',
+                3: 'notes/week3-sliding-window-protocol.pdf',
+                4: 'notes/week4-dijkstra-algorithm.pdf',
+                5: 'notes/week5-broadcast-tree.pdf',
+                6: 'notes/week6-distance-vector-routing.pdf',
+                7: 'notes/week7-data-encryption.pdf',
+                8: 'notes/week8-congestion-control.pdf',
+                9: 'notes/week9-frame-sorting.pdf',
+                10: 'notes/week10-wireshark-analysis.pdf'
+            };
+
+            const weekTitles = {
+                1: 'Data Link Layer Framing Methods',
+                2: 'CRC Code Implementation',
+                3: 'Sliding Window Protocol (Go-Back-N)',
+                4: 'Dijkstra\'s Shortest Path Algorithm',
+                5: 'Broadcast Tree for a Subnet',
+                6: 'Distance Vector Routing Algorithm',
+                7: 'Data Encryption and Decryption',
+                8: 'Congestion Control (Leaky Bucket)',
+                9: 'Frame Sorting Technique (Buffers)',
+                10: 'Packet Capture and Analysis (Wireshark)'
+            };
+
+            if (weekUrls[weekNumber]) {
+                // Show download modal with progress
+                downloadFile(`week${weekNumber}-notes.pdf`, `Week ${weekNumber}: ${weekTitles[weekNumber]} Notes.pdf`);
+            } else {
+                alert('Notes for this week are not available yet.');
+            }
+        }
+
         // Download functionality
         function downloadFile(filename, displayName) {
             // Show download modal
