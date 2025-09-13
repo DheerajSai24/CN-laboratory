@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Data Link Layer Framing Methods",
             // General explanation for Week 1 (optional, can be empty if only programs are needed)
             explanation: `This week focuses on various data link layer framing methods, which ensure that data is transmitted reliably and correctly between network nodes. We will explore how to delimit frames and handle special characters within the data stream.`,
-            image: "https://via.placeholder.com/400x200/007bff/ffffff?text=Framing+Concepts", // General image for the week
+            image: "assets/character counting.png", // General image for the week
             programs: [
                 {
                     title: "Character Counting",
@@ -232,7 +232,7 @@ Bit stuffing successfully applied, flag sequence protected.`
 CRC works by treating the data as a binary polynomial and dividing it by a generator polynomial. The remainder becomes the CRC code. Common polynomials include CRC-12, CRC-16, and CRC-CCITT, each offering different levels of error detection capability.
 
 The key advantage of CRC is its ability to detect burst errors, single-bit errors, and many multiple-bit error patterns with high probability.`,
-            image: "https://via.placeholder.com/400x200/00d4ff/ffffff?text=CRC+Concept",
+            image: "assets/CRC.png",
             code: `#include <stdio.h>
 #include <string.h>
 
@@ -292,7 +292,7 @@ Error detection capability: 99.998% for burst errors`
 In Go-Back-N, if a frame is lost or corrupted, the receiver discards all subsequent frames and requests retransmission from the lost frame onwards. This ensures proper sequencing but may lead to unnecessary retransmissions.
 
 The protocol maintains a sending window of size N and uses sequence numbers to track frames. Acknowledgments are cumulative, meaning ACK(n) confirms receipt of all frames up to sequence number n.`,
-            image: "https://via.placeholder.com/400x200/6f42c1/ffffff?text=Go-Back-N+Concept",
+            image: "assets/SlidingWindow.png",
             code: `#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -381,7 +381,7 @@ Throughput efficiency: 87.5%`
 The algorithm maintains a set of vertices with known shortest distances and iteratively selects the vertex with minimum distance. It then updates the distances to adjacent vertices, ensuring that once a vertex is processed, its shortest distance is final.
 
 In networking context, vertices represent routers/nodes and edges represent communication links with associated costs (delay, bandwidth, etc.). The algorithm guarantees finding the optimal path in terms of the chosen metric.`,
-            image: "https://via.placeholder.com/400x200/8a2be2/ffffff?text=Dijkstra's+Concept",
+            image: "assets/Dijkstras.png",
             code: `#include <stdio.h>
 #include <limits.h>
 
@@ -476,7 +476,7 @@ Dijkstra's algorithm executed successfully!`
 In a broadcast scenario, a single message from a source needs to reach all destinations within a defined network segment (subnet). A broadcast tree ensures that each node receives only one copy of the message, preventing broadcast storms and optimizing network bandwidth.
 
 Common algorithms like Breadth-First Search (BFS) or Prim's algorithm can be adapted to construct a broadcast tree, focusing on reaching all nodes efficiently.`,
-            image: "https://via.placeholder.com/400x200/ff6b6b/ffffff?text=Broadcast+Tree+Concept",
+            image: "assets/Broadcast.png",
             code: `#include <stdio.h>
 #include <stdlib.h>
 
@@ -574,7 +574,7 @@ Broadcast tree successfully generated.`
 Routers periodically exchange their distance vectors with their directly connected neighbors. Upon receiving a neighbor's distance vector, a router updates its own table if it finds a shorter path to any destination (Bellman-Ford equation). This information propagates throughout the network, eventually converging to optimal routes.
 
 Key characteristics include "routing by rumor" and the "count-to-infinity" problem, which can lead to routing loops. Protocols like RIP (Routing Information Protocol) are based on the distance vector algorithm.`,
-            image: "https://via.placeholder.com/400x200/4ecdc4/ffffff?text=Distance+Vector+Concept",
+            image: "assets/DistanceVectorRouting.png",
             code: `#include <stdio.h>
 #include <limits.h>
 
@@ -749,7 +749,7 @@ Final routing tables displayed above.`
 Symmetric-key algorithms (like Caesar cipher or DES/AES) use the same key for both encryption and decryption. Asymmetric-key algorithms (like RSA) use a pair of keys: a public key for encryption and a private key for decryption.
 
 Encryption is crucial for securing data in transit (e.g., HTTPS) and at rest (e.g., encrypted files), ensuring confidentiality and integrity in computer networks.`,
-            image: "https://via.placeholder.com/400x200/ffbd2e/ffffff?text=Encryption+Concept",
+            image: "assets/DataEncryptionAndDecryption.png",
             code: `#include <stdio.h>
 #include <string.h>
 
@@ -827,7 +827,7 @@ Encryption and decryption successful!`
 It works by allowing data to flow out at a constant rate, even if the input rate varies. Data packets are placed into a "bucket" (buffer), and if the bucket overflows, new packets are discarded (or queued if space allows). This smooths out bursty traffic and prevents overloads.
 
 The algorithm effectively regulates the rate at which packets are sent into the network, thereby reducing the likelihood of congestion and maintaining network stability.`,
-            image: "https://via.placeholder.com/400x200/569cd6/ffffff?text=Leaky+Bucket+Concept",
+            image: "assets/ConjestionControl.png",
             code: `#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -933,7 +933,7 @@ Leaky Bucket simulation completed successfully.`
 Out-of-order delivery can occur due to multiple paths in a network, retransmissions, or varying network delays. Buffers are often used at the receiver side to temporarily store incoming frames. These buffered frames are then reordered based on their sequence numbers before being passed to the higher layers.
 
 This experiment demonstrates a basic frame sorting mechanism using buffers to reassemble an ordered sequence from disordered input.`,
-            image: "https://via.placeholder.com/400x200/dcdcaa/ffffff?text=Frame+Sorting+Concept",
+            image: "assets/FrameSortingTechnique.png",
             code: `// Frame Sorting Technique - Buffer Management
 // This week focuses on theoretical concepts and practical understanding
 // of frame sorting mechanisms in computer networks.
@@ -1000,7 +1000,7 @@ without requiring complex programming implementation.`
 This experiment conceptually covers packet capturing, filtering, and basic analysis. Although direct Wireshark integration in a C program is complex, the concepts involve understanding packet headers, payload, and the ability to apply filters to focus on specific types of traffic (e.g., HTTP, TCP, UDP).
 
 The goal is to understand how network data can be intercepted, examined, and interpreted to diagnose network issues or monitor network behavior.`,
-            image: "https://via.placeholder.com/400x200/b5cea8/ffffff?text=Packet+Analysis+Concept",
+            image: "assets/packetCapture.png",
             code: `// Packet Capture and Analysis - Wireshark Concepts
 // This week focuses on theoretical understanding of network packet analysis
 // and the concepts behind tools like Wireshark.
