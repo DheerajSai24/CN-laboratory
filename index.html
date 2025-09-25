@@ -3,101 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Networks Laboratory</title>
+    <title>Virtual Laboratory</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for Virtual Lab homepage using the same design system */
+        .virtual-lab-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .subject-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+            padding: 3rem 0;
+        }
+
+        .subject-card {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .subject-card:nth-child(1) { animation-delay: 0.2s; }
+        .subject-card:nth-child(2) { animation-delay: 0.4s; }
+
+        /* Same gradient overlay system as week cards */
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .subject-card:hover::before {
+            opacity: 0.15;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color-1);
+        }
+
+        .subject-card-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover .subject-card-icon {
+            transform: scale(1.1);
+        }
+
+        .subject-card h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subject-card p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Removed hover color changes - keeping original colors */
+
+        .enter-lab-btn {
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            color: var(--button-text-primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .enter-lab-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .status-available {
+            background: linear-gradient(45deg, var(--accent-color-2), var(--accent-color-1));
+            color: white;
+        }
+
+        .status-coming-soon {
+            background: var(--text-secondary);
+            color: var(--bg-secondary);
+            opacity: 0.8;
+        }
+
+        /* Theme toggle positioned same as CN lab */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Responsive design matching CN lab */
+        @media (max-width: 768px) {
+            .subject-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+
+            .subject-card {
+                min-height: 320px;
+                padding: 2.5rem;
+            }
+
+            .subject-card h2 {
+                font-size: 2rem;
+            }
+
+            .subject-card-icon {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .virtual-lab-container {
+                padding: 0 1rem;
+            }
+
+            .subject-card {
+                padding: 2rem;
+                min-height: 280px;
+            }
+
+            .subject-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>Computer Networks Lab</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link active">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="recordings.html" class="nav-link">Recordings</a>
-                </li>
-                <li class="nav-item">
-                    <a href="notes.html" class="nav-link">Notes</a>
-                </li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle">
-                <span class="theme-icon">🌙</span>
-            </button>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">
+        <span class="theme-icon">🌙</span>
+    </button>
 
+    <!-- Main Header using same styling as CN lab -->
     <header class="main-header">
-        <h1 id="main-title" class="fade-in">Computer Networks Laboratory</h1>
+        <h1 id="main-title" class="fade-in">Virtual Laboratory</h1>
+        <div class="header-subtitle">Explore Computer Science Subjects Through Interactive Learning</div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <section id="home-page" class="active">
-            <div class="week-cards-grid">
-                <!-- Week cards will be dynamically loaded here by JavaScript -->
-            </div>
-        </section>
+        <div class="virtual-lab-container">
+            <section class="subject-cards-grid">
+                <!-- Operating Systems Card -->
+                <div class="subject-card" onclick="navigateToOS()">
+                    <div class="status-badge status-coming-soon">Coming Soon</div>
+                    <div class="subject-card-icon">🖥️</div>
+                    <h2>Operating Systems</h2>
+                    <p>Explore fundamental concepts of operating systems including process management, memory allocation, file systems, and system calls through interactive simulations and practical exercises.</p>
+                    <button class="enter-lab-btn">Enter Lab</button>
+                </div>
 
-        <section id="week-details-page" class="hidden">
-            <h2 id="week-detail-title"></h2>
-            <div class="detail-content">
-                <p id="week-detail-explanation"></p>
-                <div class="image-container">
-                    <img id="week-detail-image" src="" alt="Concept Diagram">
+                <!-- Computer Networks Card -->
+                <div class="subject-card" onclick="navigateToNetworks()">
+                    <div class="status-badge status-available">Available</div>
+                    <div class="subject-card-icon">🌐</div>
+                    <h2>Computer Networks</h2>
+                    <p>Dive into networking protocols, data transmission, network topologies, and routing algorithms. Practice with real-world scenarios and network simulation tools.</p>
+                    <button class="enter-lab-btn">Enter Lab</button>
+                </div>
+            </section>
         </div>
-
-                <!-- Sub-program navigation for Week 1 -->
-                <div id="sub-program-navigation" class="hidden">
-                    <h4 id="program-title"></h4>
-                    <div class="program-nav-buttons">
-                        <button id="prev-program-btn" class="animated-button-small">&lt; Previous</button>
-                        <button id="next-program-btn" class="animated-button-small">Next &gt;</button>
-            </div>
-        </div>
-
-                <div class="code-container">
-                    <h3>C Program</h3>
-                    <pre><code id="week-detail-code" class="language-c"></code></pre>
-                </div>
-                <div class="output-container">
-                    <h3>Simulated Output</h3>
-                    <pre id="week-detail-output"></pre>
-                </div>
-
-                <!-- C Compiler Section -->
-                <div class="compiler-container">
-                    <h3>Online C Compiler</h3>
-                    <div class="compiler-editor">
-                        <div class="code-editor-wrapper">
-                            <div class="line-numbers" id="line-numbers"></div>
-                            <textarea id="c-code-editor" placeholder="Write your C code here..." rows="15"></textarea>
-                        </div>
-                    </div>
-                    <div class="compiler-controls">
-                        <button id="run-code-btn" class="compiler-button">Run Code</button>
-                        <button id="clear-code-btn" class="compiler-button-secondary">Clear</button>
-                    </div>
-                    <div id="compiler-output" class="compiler-output hidden">
-                        <h4>Output:</h4>
-                        <pre id="compiler-result"></pre>
-                    </div>
-                </div>
-
-            <button id="back-to-home" class="animated-button">Back to Home</button>
-        </section>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        function navigateToOS() {
+            alert('Operating Systems laboratory is coming soon! 🚀\n\nWe are working hard to bring you interactive OS experiments. Stay tuned for updates!');
+        }
+
+        function navigateToNetworks() {
+            window.location.href = 'cn.html';
+        }
+
+        // Theme toggle functionality (same as CN lab)
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.querySelector('.theme-icon');
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+            // Theme toggle event listener
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                themeIcon.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+
+        // Enhanced card interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.subject-card');
+            
+            cards.forEach((card, index) => {
+                // Add stagger animation
+                card.style.animationDelay = `${0.2 + (index * 0.2)}s`;
+                
+                // Enhanced hover effects
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.subject-card-icon');
+                    const badge = this.querySelector('.status-badge');
+                    
+                    if (icon) {
+                        icon.style.transform = 'scale(1.1) rotateY(15deg)';
+                        icon.style.transition = 'all 0.3s ease';
+                    }
+                    
+                    if (badge) {
+                        badge.style.transform = 'scale(1.05)';
+                        badge.style.transition = 'all 0.3s ease';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.subject-card-icon');
+                    const badge = this.querySelector('.status-badge');
+                    
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotateY(0deg)';
+                    }
+                    
+                    if (badge) {
+                        badge.style.transform = 'scale(1)';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
